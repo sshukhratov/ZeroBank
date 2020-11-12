@@ -29,4 +29,34 @@ public class LoginStepDefinitions {
     public void user_should_see_as_title(String string) {
         Assert.assertTrue(loginPage.verifyTitle(string));
     }
+
+    @When("user looks at the top left link text")
+    public void userLooksAtTheTopLeftLinkText() {
+        System.out.println("Top Left link text = " + loginPage.getLinkText());
+    }
+
+    @And("user looks at the link of website")
+    public void userLooksAtTheLinkOfWebsite() {
+        System.out.println("Current url = " + loginPage.getUrl());
+    }
+
+    @Then("user should see {string} as link text")
+    public void userShouldSeeAsLinkText(String expectedText) {
+        Assert.assertEquals(loginPage.getLinkText(), expectedText);
+    }
+
+    @And("user should see website link contains {string}")
+    public void userShouldSeeWebsiteLinkContains(String expectedLinkText) {
+        Assert.assertTrue(loginPage.getUrl().contains(expectedLinkText));
+    }
+
+    @And("user looks at the  href text of link text")
+    public void userLooksAtTheHrefTextOfLinkText() {
+        System.out.println("HREF attribute = " + loginPage.getHreFAttribute());
+    }
+
+    @And("user should see href contains {string}")
+    public void userShouldSeeHrefContains(String expected) {
+        Assert.assertTrue(loginPage.getHreFAttribute().contains(expected));
+    }
 }

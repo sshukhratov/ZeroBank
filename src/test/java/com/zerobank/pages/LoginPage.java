@@ -8,6 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
+    public LoginPage(){
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
+
     @FindBy(id = "user_login")
     private WebElement usernameInput;
 
@@ -17,8 +21,15 @@ public class LoginPage {
     @FindBy(xpath = "//input[@type='submit']")
     private WebElement signBtn;
 
-    public LoginPage(){
-        PageFactory.initElements(Driver.getDriver(), this);
+    @FindBy(partialLinkText = "Zero Bank")
+    private WebElement linkText;
+
+    public String getHreFAttribute(){
+        return linkText.getAttribute("href");
+    }
+
+    public String getUrl(){
+        return Driver.getDriver().getCurrentUrl();
     }
 
     public void goToLoginPage(){
@@ -42,5 +53,9 @@ public class LoginPage {
 
     public boolean verifyTitle(String expectedTitle){
         return getTitle().equals(expectedTitle);
+    }
+
+    public String getLinkText(){
+        return linkText.getText();
     }
 }
