@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src\\test\\resources\\features", //content root
         glue = "com\\zerobank\\step_definitions", //source root
         dryRun = false,
-        tags = "@test2",
+        tags = "@test3",
         publish = true
 
 )

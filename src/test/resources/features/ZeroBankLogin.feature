@@ -15,3 +15,9 @@ Feature: Zero Bank login verifications
       And user looks at the  href text of link text
       Then user should see "Zero Bank" as link text
       And user should see href contains "index.html"
+
+    @test3
+    Scenario: Zero Bank login title verification
+      And user enters valid username and password
+      When user looks at the title of page
+      Then user should see "Zero - Account Summary" as title
