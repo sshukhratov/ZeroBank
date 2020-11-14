@@ -1,12 +1,15 @@
 package com.zerobank.step_definitions;
 
 import com.zerobank.pages.LoginPage;
+import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.ConfigurationReader;
+import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 public class LoginStepDefinitions {
 
@@ -58,5 +61,23 @@ public class LoginStepDefinitions {
     @And("user should see href contains {string}")
     public void userShouldSeeHrefContains(String expected) {
         Assert.assertTrue(loginPage.getHreFAttribute().contains(expected));
+    }
+
+    @When("user clicks to {string} link")
+    public void userClicksToLink(String linkText) {
+        loginPage.clickTo(linkText);
+        BrowserUtils.wait(2);
+    }
+
+    @And("authorized user clicks to {string}")
+    public void authorizedUserClicksTo(String linkText) {
+        loginPage.clickTo(linkText);
+        BrowserUtils.wait(2);
+    }
+
+    @Then("authorized user should see {string}")
+    public void authorizedUserShouldSee(String arg0) {
+        Assert.assertTrue(loginPage.verifyTitle(arg0));
+
     }
 }
